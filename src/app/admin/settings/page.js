@@ -15,16 +15,16 @@ export default function SettingsPage() {
   };
 
   const [coords, setCoords] = useState({
-    rotation: 6,
-    maxWidth: 750,
-    toX: 465, toY: 676,
-    fromX: 524, fromY: 755,
-    msgX: 200, msgY: 1034,
-    toFontSize: 50,
-    fromFontSize: 50,
-    fontSize: 45,
-    lineHeight: 65,
-    letterSpacing: 0,
+    rotation: 3,
+    maxWidth: 755,
+    toX: 283, toY: 1011,
+    fromX: 291, fromY: 893,
+    msgX: 94, msgY: 1199,
+    toFontSize: 41,
+    fromFontSize: 40,
+    fontSize: 35,
+    lineHeight: 47,
+    letterSpacing: -1,
   });
 
   useEffect(() => {
