@@ -1,0 +1,8 @@
+{
+  "name": "Confess App",
+  "short_name": "Confess",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "start_url": "/"
+}

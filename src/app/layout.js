@@ -14,6 +14,12 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Confess App",
   description: "Kirim pesan rahasiamu secara anonim.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Confess App",
+  },
 };
 
 export const viewport = {
