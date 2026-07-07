@@ -56,7 +56,7 @@ export default function SplashScreen({ onFinish }) {
       transition: stage === 'slide-up' ? 'transform 0.8s cubic-bezier(0.65, 0, 0.35, 1)' : 'opacity 0.5s ease-in'
     }}>
       <img 
-        src="/Pubb/Pubb/tampilan%20awal%20masuk.jpg%20loding%20page%20nya.png" 
+        src="/loading.png" 
         alt="Loading..."
         style={{
           width: '100%',

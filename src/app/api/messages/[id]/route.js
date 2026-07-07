@@ -1,22 +1,34 @@
 import { NextResponse } from 'next/server';
-import db from '@/lib/db';
+import { supabase } from '@/lib/supabase';
 
 export async function GET(request, { params }) {
   try {
     const resolvedParams = await params;
     const id = resolvedParams.id;
     
-    // Auto-delete messages that have been posted for more than 2 days
-    db.exec(`
-      DELETE FROM messages 
-      WHERE status = 'posted' 
-      AND (julianday('now') - julianday(COALESCE(updated_at, created_at))) >= 2
-    `);
+    const twoDaysAgo = new Date();
+    twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
 
-    const stmt = db.prepare('SELECT id, to_name, from_name, message_text, song, status, created_at FROM messages WHERE id = ?');
-    const message = stmt.get(id);
+    await supabase
+      .from('messages')
+      .delete()
+      .eq('status', 'posted')
+      .lte('updated_at', twoDaysAgo.toISOString());
+      
+    await supabase
+      .from('messages')
+      .delete()
+      .eq('status', 'posted')
+      .is('updated_at', null)
+      .lte('created_at', twoDaysAgo.toISOString());
 
-    if (!message) {
+    const { data: message, error } = await supabase
+      .from('messages')
+      .select('id, to_name, from_name, message_text, song, status, created_at')
+      .eq('id', id)
+      .single();
+
+    if (error || !message) {
       return NextResponse.json({ error: 'Message not found' }, { status: 404 });
     }
 
@@ -29,7 +41,6 @@ export async function GET(request, { params }) {
 
 export async function PATCH(request, { params }) {
   try {
-    // Check auth
     const authCookie = request.cookies.get('admin_auth')?.value;
     if (authCookie !== 'authenticated') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -39,10 +50,13 @@ export async function PATCH(request, { params }) {
     const resolvedParams = await params;
     const id = resolvedParams.id;
 
-    const stmt = db.prepare("UPDATE messages SET status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?");
-    const result = stmt.run(status, id);
+    const { data, error } = await supabase
+      .from('messages')
+      .update({ status, updated_at: new Date().toISOString() })
+      .eq('id', id)
+      .select();
 
-    if (result.changes === 0) {
+    if (error || !data || data.length === 0) {
       return NextResponse.json({ error: 'Message not found' }, { status: 404 });
     }
 

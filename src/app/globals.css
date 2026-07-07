@@ -13,6 +13,21 @@ body {
   align-items: center;
   min-height: 100vh;
   overflow: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  right: -5%;
+  bottom: -5%;
+  background-image: url('/loading.png');
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px);
+  z-index: -1;
 }
 
 /* Mobile App Wrapper */
