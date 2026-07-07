@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import styles from './page.module.css';
 import SplashScreen from './components/SplashScreen';
@@ -8,6 +8,14 @@ export default function Home() {
   const [showSplash, setShowSplash] = useState(true);
   const [showCr, setShowCr] = useState(false);
   const [copyAlert, setCopyAlert] = useState(false);
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleInteract = () => {
+    if (audioRef.current && !isPlaying) {
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(e => console.log('Autoplay blocked:', e));
+    }
+  };
 
   const [formData, setFormData] = useState({
     to_name: '',
@@ -54,7 +62,8 @@ export default function Home() {
   };
 
   return (
-    <main className={styles.wrapper}>
+    <main className={styles.wrapper} onClick={handleInteract} onTouchStart={handleInteract}>
+      <audio ref={audioRef} src="/bg-music.webm" loop />
       {/* Splash Screen */}
       {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
 
