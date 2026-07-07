@@ -1,0 +1,72 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.frontLayer {
+  z-index: 10;
+}
+
+.interactiveArea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.typewriterBox {
+  position: absolute;
+  top: 42%;
+  left: -2%;
+  /* Moved left */
+  width: 80%;
+  height: 45%;
+  padding: 25px;
+  overflow: hidden;
+  transform: rotate(6deg);
+  /* Rotated 2 degrees */
+  /* background: rgba(255, 255, 255, 0.2); Uncomment if needs slightly more contrast */
+}
+
+.backBtn {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, #4e342e, #3e2723);
+  color: #d7ccc8;
+  padding: 10px 20px;
+  border: 2px solid #1a0000;
+  border-radius: 4px;
+  font-family: "Courier New", Courier, serif;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8), inset 0 0 5px rgba(0, 0, 0, 0.8);
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 20;
+  text-shadow: 1px 1px 2px #000;
+  transition: all 0.2s;
+}
+
+.backBtn:hover {
+  background: linear-gradient(to bottom, #5d4037, #4e342e);
+  transform: translateX(-50%) translateY(-1px);
+}

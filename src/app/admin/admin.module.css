@@ -1,0 +1,432 @@
+/* ... (Previous login styles remain the same) ... */
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #1c1c1e;
+}
+
+.inputGroup {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.input:focus {
+  border-color: #007aff;
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1), inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.button {
+  width: 100%;
+  padding: 16px;
+  border-radius: 14px;
+  border: none;
+  background: #007aff;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.3s;
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.button:hover {
+  background: #0062cc;
+}
+
+/* 3-Column Dashboard Styles */
+.dashboard {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+  .dashboard {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    padding: 20px 10px;
+  }
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  padding: 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1c1c1e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(0,0,0,0.05);
+  padding-bottom: 15px;
+}
+
+/* Tabs Filter */
+.filterTabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filterBtn {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.5);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #555;
+}
+
+.filterBtn:hover {
+  background: rgba(255,255,255,0.9);
+}
+
+.filterBtn.active {
+  background: #007aff;
+  color: white;
+  border-color: #007aff;
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+}
+
+/* Col 1: Messages List */
+.messageList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 75vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.messageItem {
+  padding: 15px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.messageItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.messageItem.active {
+  border-color: #007aff;
+  background: #f0f8ff;
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.15);
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.statusPending {
+  background: #ffcc00;
+  color: #8c7300;
+}
+
+.statusPosted {
+  background: #34c759;
+  color: #185a28;
+}
+
+/* Col 2: Settings / Tuning */
+.tuningContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+.tuningControl {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(255,255,255,0.6);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.tuningLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: #444;
+}
+
+.rangeInput {
+  flex: 1;
+  accent-color: #007aff;
+  height: 6px;
+}
+
+.numInput {
+  width: 65px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  text-align: center;
+  outline: none;
+}
+
+.numInput:focus {
+  border-color: #007aff;
+}
+
+.saveSettingsBtn {
+  margin-top: auto;
+  width: 100%;
+  padding: 15px;
+  background: #f0f0f5;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.saveSettingsBtn:hover {
+  background: #e0e0e5;
+  border-color: #ccc;
+}
+
+/* Col 3: Preview */
+.previewArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.canvasWrapper {
+  width: 100%;
+  max-width: 320px;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.emptyPreview {
+  text-align: center;
+  color: #888;
+  padding: 50px 20px;
+  font-size: 15px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.songInfoBox {
+  width: 100%;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #fdfbf7 0%, #f4f0e6 100%);
+  border-left: 4px solid #f39c12;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  margin-top: auto;
+}
+
+.actionBtn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.actionBtn:active {
+  transform: scale(0.98);
+}
+
+.actionBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.downloadBtn {
+  background: linear-gradient(135deg, #007aff 0%, #0056b3 100%);
+}
+
+.markBtn {
+  background: linear-gradient(135deg, #34c759 0%, #248a3d 100%);
+}
+
+/* --- Mobile Specific Styles --- */
+.mobileNav {
+  display: none;
+}
+
+.mobileBackBtn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding-bottom: 80px; /* Space for mobile nav */
+  }
+
+  .mobileNav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+    justify-content: space-around;
+    padding: 10px 0;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  }
+
+  .mobileNavBtn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .mobileNavActive {
+    color: #007aff;
+  }
+
+  /* Hide tabs filter on mobile since we have bottom nav */
+  .filterTabs {
+    display: none;
+  }
+
+  .messageListCard.hiddenOnMobile {
+    display: none;
+  }
+
+  .previewCard {
+    display: none; /* Hide preview card by default on mobile until a message is selected */
+  }
+
+  .previewCard.activeOnMobile {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000; /* Above everything */
+    background: #fdfbf7;
+    border-radius: 0;
+    margin: 0;
+    padding: 20px;
+    padding-top: calc(20px + env(safe-area-inset-top));
+    overflow-y: auto;
+    box-sizing: border-box;
+  }
+
+  .mobileBackBtn {
+    display: block;
+    align-self: flex-start;
+    background: transparent;
+    border: none;
+    color: #007aff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 0;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
+}
